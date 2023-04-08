@@ -1,8 +1,8 @@
-﻿using BlockDIS.WebClient.Models;
+﻿using iDent.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace BlockDIS.WebClient.Controllers
+namespace iDent.Web.Controllers
 {
     public class HomeController : Controller
     {
