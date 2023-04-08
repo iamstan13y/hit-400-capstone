@@ -1,4 +1,4 @@
-namespace BlockDIS.WebClient.Models
+namespace iDent.Web.Models
 {
     public class ErrorViewModel
     {
