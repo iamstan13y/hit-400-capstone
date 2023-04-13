@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iDent.Web", "BlockDIS.WebClient\iDent.Web.csproj", "{A53B5B26-0C1E-452E-9FD2-5B8E2EBBA6F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iDent.Web", "iDent.Web\iDent.Web.csproj", "{A53B5B26-0C1E-452E-9FD2-5B8E2EBBA6F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
