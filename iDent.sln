@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iDent.Web", "iDent.Web\iDent.Web.csproj", "{A53B5B26-0C1E-452E-9FD2-5B8E2EBBA6F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iDent.ModelLibrary", "iDent.ModelLibrary\iDent.ModelLibrary.csproj", "{5A311750-DCE2-4AB3-A9EB-824D13672DE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A53B5B26-0C1E-452E-9FD2-5B8E2EBBA6F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A53B5B26-0C1E-452E-9FD2-5B8E2EBBA6F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A53B5B26-0C1E-452E-9FD2-5B8E2EBBA6F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
