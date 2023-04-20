@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace iDent.Web.Controllers
 {
@@ -16,6 +17,7 @@ namespace iDent.Web.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             return View();
