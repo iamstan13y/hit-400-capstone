@@ -3,16 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using iDent.ModelLibrary.Models.Data;
+using iDent.Web.Services.IServices;
 
 namespace iDent.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IAccountService _accountService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IAccountService accountService)
         {
             _logger = logger;
+            _accountService = accountService;
         }
 
         [Authorize]
@@ -39,11 +42,11 @@ namespace iDent.Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(Account account)
-        {
-            Account accountObj = await _accountRepo.LoginAsync(SD.AccountAPIPath + "authenticate/", user);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Login(Account account)
+        //{
+            //Account accountObj = await _accountRepo.LoginAsync(SD.AccountAPIPath + "authenticate/", user);
 
             //if (userObj.Token == null)
             //{
@@ -58,8 +61,8 @@ namespace iDent.Web.Controllers
 
             //HttpContext.Session.SetString("JWToken", userObj.Token);
             //TempData["alert"] = $"Welcome, {userObj.Username}!";
-            return await Task.FromResult(RedirectToAction("Index"));
-        }
+           // return await Task.FromResult(RedirectToAction("Index"));
+        //}
 
         [HttpGet]
         public IActionResult Register()
