@@ -5,7 +5,7 @@ namespace iDent.Web.Services.IServices
 {
     public interface IAccountService
     {
-        Task<Result<Account>> AddAsync(Account account);
+        Task<Result<Account>> AddAsync(AccountRequest request);
         Task<Result<Account>> GetByIdAsync(int id);
         Task<Result<IEnumerable<Account>>> GetAllAsync();
         Task<Result<Account>> UpdateAsync(Account account);
