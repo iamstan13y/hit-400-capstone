@@ -1,8 +1,8 @@
 ﻿using iDent.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using iDent.ModelLibrary.Models.Data;
 
 namespace iDent.Web.Controllers
 {
@@ -35,31 +35,31 @@ namespace iDent.Web.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            //User user = new User();
+            Account account = new();
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Login()//User user)
-        //{
-        //    //User userObj = await _accountRepo.LoginAsync(SD.AccountAPIPath + "authenticate/", user);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(Account account)
+        {
+            Account accountObj = await _accountRepo.LoginAsync(SD.AccountAPIPath + "authenticate/", user);
 
-        //    //if (userObj.Token == null)
-        //    //{
-        //    //    return View();
-        //    //}
+            //if (userObj.Token == null)
+            //{
+            //    return View();
+            //}
 
-        //    //var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-        //    //identity.AddClaim(new Claim(ClaimTypes.Name, userObj.Username));
-        //    //identity.AddClaim(new Claim(ClaimTypes.Role, userObj.Role));
-        //    //var principal = new ClaimsPrincipal(identity);
-        //    //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            //var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+            //identity.AddClaim(new Claim(ClaimTypes.Name, userObj.Username));
+            //identity.AddClaim(new Claim(ClaimTypes.Role, userObj.Role));
+            //var principal = new ClaimsPrincipal(identity);
+            //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-        //    //HttpContext.Session.SetString("JWToken", userObj.Token);
-        //    //TempData["alert"] = $"Welcome, {userObj.Username}!";
-        //    return await Task.FromResult(RedirectToAction("Index"));
-        //}
+            //HttpContext.Session.SetString("JWToken", userObj.Token);
+            //TempData["alert"] = $"Welcome, {userObj.Username}!";
+            return await Task.FromResult(RedirectToAction("Index"));
+        }
 
         [HttpGet]
         public IActionResult Register()
