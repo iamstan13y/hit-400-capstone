@@ -1,5 +1,5 @@
-using iDent.Web.Models.Repository;
-using iDent.Web.Models.Repository.IRepository;
+using iDent.Web.Services;
+using iDent.Web.Services.IServices;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Net;
 
@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                    .AddCookie(options =>
