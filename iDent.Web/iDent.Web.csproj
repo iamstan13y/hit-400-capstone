@@ -10,8 +10,4 @@
     <ProjectReference Include="..\iDent.ModelLibrary\iDent.ModelLibrary.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Repository\IRepository\" />
-  </ItemGroup>
-
 </Project>
