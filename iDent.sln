@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iDent.Web", "iDent.Web\iDen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iDent.API", "iDent.API\iDent.API.csproj", "{50FAE732-BD0C-4A65-898F-6BEF48C33C9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iDent.ModelLibrary", "iDent.ModelLibrary\iDent.ModelLibrary.csproj", "{5A311750-DCE2-4AB3-A9EB-824D13672DE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{50FAE732-BD0C-4A65-898F-6BEF48C33C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50FAE732-BD0C-4A65-898F-6BEF48C33C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50FAE732-BD0C-4A65-898F-6BEF48C33C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
