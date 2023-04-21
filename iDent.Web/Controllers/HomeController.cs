@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using iDent.ModelLibrary.Models.Data;
 using iDent.Web.Services.IServices;
+using iDent.ModelLibrary.Models.Local;
 
 namespace iDent.Web.Controllers
 {
@@ -70,20 +71,17 @@ namespace iDent.Web.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Register(User user)
-        //{
-        //    bool result = await _accountRepo.RegisterAsync(SD.AccountAPIPath + "register/", user);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(AccountRequest request)
+        {
+            var result = await _accountService.AddAsync(request);
 
-        //    if (result == false)
-        //    {
-        //        return View();
-        //    }
+            if (!result.Success) return View();            
 
-        //    TempData["alert"] = $"Registration Successful!";
-        //    return RedirectToAction("Login");
-        //}
+            TempData["alert"] = $"Registration Successful!";
+            return RedirectToAction("Login");
+        }
 
         //public async Task<IActionResult> Logout()
         //{
