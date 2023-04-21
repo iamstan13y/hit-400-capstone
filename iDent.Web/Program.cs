@@ -10,6 +10,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IAccountService, AccountService>();
 
+builder.Services.AddHttpClient<IAccountService, AccountService>(c =>
+                c.BaseAddress = new Uri(builder.Configuration["Urls:iDentAPI"]));
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                    .AddCookie(options =>
                    {
