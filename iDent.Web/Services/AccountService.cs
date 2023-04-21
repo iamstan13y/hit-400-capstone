@@ -1,4 +1,5 @@
-﻿using iDent.ModelLibrary.Models.Data;
+﻿using iDent.ModelLibrary.Extensions;
+using iDent.ModelLibrary.Models.Data;
 using iDent.ModelLibrary.Models.Local;
 using iDent.Web.Services.IServices;
 
@@ -6,9 +7,19 @@ namespace iDent.Web.Services
 {
     public class AccountService : IAccountService
     {
-        public Task<Result<Account>> AddAsync(Account account)
+        private readonly HttpClient _httpClient;
+
+        public AccountService(HttpClient httpClient)
         {
-            throw new NotImplementedException();
+            _httpClient = httpClient;
+        }
+
+        public async Task<Result<Account>> AddAsync(AccountRequest request)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"api/v1/Account", request);
+            if (!response.IsSuccessStatusCode) throw new Exception("Something went wrong when calling API.");
+
+            return await response.ReadContentAsAsync<Result<Account>>();
         }
 
         public Task<Result<bool>> DeleteAsync(Account account)
