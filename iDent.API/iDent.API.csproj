@@ -24,4 +24,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\iDent.ModelLibrary\iDent.ModelLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
