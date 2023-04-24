@@ -1,8 +1,4 @@
-﻿using iDent.ModelLibrary.Models.Local;
-using System.Net;
-using System.Net.Mail;
-
-namespace iDent.API.Services
+﻿namespace iDent.API.Services
 {
     public class EmailService : IEmailService
     {
