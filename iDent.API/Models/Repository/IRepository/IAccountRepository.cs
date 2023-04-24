@@ -6,7 +6,7 @@ namespace iDent.API.Models.Repository.IRepository
 {
     public interface IAccountRepository
     {
-        Task<Result<Account>> AddAsync(Account account);
+        Task<Result<Account>> AddAsync(AccountRequest request);
         Task<Result<Account>> AddAdminAsync(Account account);
         Task<Result<Account>> GetByIdAsync(int id);
         Task<Result<IEnumerable<Account>>> GetAllAsync();
