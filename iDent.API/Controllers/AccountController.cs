@@ -16,7 +16,7 @@ namespace iDent.API.Controllers
         public async Task<IActionResult> Post(AccountRequest request)
         {
             var result = await _accountRepository.AddAsync(request);
-            if(!result.Success) return BadRequest(result);
+            if (!result.Success) return BadRequest(result);
 
             return Ok(result);
         }
