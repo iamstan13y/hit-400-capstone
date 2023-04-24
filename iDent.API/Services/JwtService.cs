@@ -11,7 +11,7 @@ namespace iDent.API.Services
         private readonly IConfiguration _configuration;
 
         public JwtService(IConfiguration configuration) => _configuration = configuration;
-        
+
         public Task<string> GenerateTokenAsync(Account account)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
