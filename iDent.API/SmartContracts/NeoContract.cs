@@ -1,50 +1,29 @@
 ﻿using Neo;
-using Neo.IO;
-using Neo.Network.RPC;
-using Neo.SmartContract;
-using Neo.VM;
-using Neo.VM.Types;
-using Neo.Wallets;
+using Neo.Network;
+using Neo.SmartContract.Framework;
 
 namespace iDent.API.SmartContracts
 {
-    public class NeoContract
+    public class NeoContract : SmartContract
     {
-        private readonly RpcClient rpcClient;
-        private readonly KeyPair keyPair;
-        private readonly UInt160 contractHash;
+        private static readonly Map<string, Student> students = new();
 
-        public NeoContract(string rpcEndpoint, string privateKey, string contractAddress)
+        public static void ddStudent(string id, string name, int age)
         {
-            rpcClient = new RpcClient(new Uri(rpcEndpoint));
-            keyPair = new KeyPair(privateKey.HexToBytes());
-            contractHash = UInt160.Parse(contractAddress);
+            var student = new Student { Name = name, Age = age };
+
+            students.Put(id, student);
         }
 
-        public void SaveData(string key, string value)
+        public static Student getStudent(string id)
         {
-            var scriptHash = new UInt160(key.ToScriptHash());
-            var operation = new ContractOperation
-            {
-                ScriptHash = contractHash,
-                Operation = "put",
-                Arguments = new[] { scriptHash.ToArray(), value }
-            };
-
-            var tx = rpcClient(keyPair, operation) ?? throw new Exception("Transaction failed");
+            return students.Get(id);
         }
 
-        public string RetrieveData(string key)
+        public class Student
         {
-            var scriptHash = new UInt160(key.ToScriptHash());
-            var sb = new ScriptBuilder();
-            sb.EmitAppCall(contractHash, "get", new[] { scriptHash.ToArray() });
-            var result = rpcClient.InvokeScriptAsync(sb.ToArray());
-            if (result == null || result.Type != StackItemType.Array)
-            {
-                throw new Exception("Unable to retrieve data");
-            }
-            return result.GetArray()[0].GetString();
+            public string Name;
+            public int Age;
         }
     }
 }
