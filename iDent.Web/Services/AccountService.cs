@@ -42,9 +42,12 @@ namespace iDent.Web.Services
             throw new NotImplementedException();
         }
 
-        public Task<Result<Account>> LoginAsync(LoginRequest login)
+        public async Task<Result<Account>> LoginAsync(LoginRequest request)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.PostAsJsonAsync($"api/v1/Account/login", request);
+            if (!response.IsSuccessStatusCode) throw new Exception("Something went wrong when calling API.");
+
+            return await response.ReadContentAsAsync<Result<Account>>();
         }
 
         public Task<Result<string>> ResendOtpAsync(string email)
