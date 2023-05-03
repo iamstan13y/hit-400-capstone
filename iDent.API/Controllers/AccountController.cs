@@ -20,5 +20,14 @@ namespace iDent.API.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Post(LoginRequest request)
+        {
+            var result = await _accountRepository.LoginAsync(request);
+            if (!result.Success) return Unauthorized(result);
+
+            return Ok(result);
+        }
     }
 }
