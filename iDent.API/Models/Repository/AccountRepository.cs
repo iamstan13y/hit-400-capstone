@@ -4,6 +4,7 @@ using iDent.API.Services;
 using iDent.ModelLibrary.Models.Data;
 using iDent.ModelLibrary.Models.Local;
 using iDent.ModelLibrary.Utility;
+using Microsoft.EntityFrameworkCore;
 
 namespace iDent.API.Models.Repository
 {
@@ -116,9 +117,19 @@ namespace iDent.API.Models.Repository
             throw new NotImplementedException();
         }
 
-        public Task<Result<Account>> LoginAsync(LoginRequest login)
+        public async Task<Result<Account>> LoginAsync(LoginRequest login)
         {
-            throw new NotImplementedException();
+            var account = await _context.Accounts!
+               .Where(x => x.Email == login.Email)
+               .FirstOrDefaultAsync();
+
+            if (account == null || _passwordService.VerifyHash(login.Password!, account!.Password!) == false)
+                return new Result<Account>(false, "Username or password is incorrect!");
+
+            account.Token = await _jwtService.GenerateTokenAsync(account);
+            account.Password = "***********";
+
+            return new Result<Account>(account);
         }
 
         public Task<Result<string>> ResendOtpAsync(string email)
