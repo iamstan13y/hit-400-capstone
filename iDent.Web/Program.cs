@@ -8,10 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddScoped<IAccountService, AccountService>();
 
 builder.Services.AddHttpClient<IAccountService, AccountService>(c =>
                 c.BaseAddress = new Uri(builder.Configuration["Urls:iDentAPI"]));
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                    .AddCookie(options =>
@@ -40,16 +44,16 @@ app.UseRouting();
 
 app.UseAuthentication();
 
-app.UseStatusCodePages(async context =>
-{
-    var response = context.HttpContext.Response;
+//app.UseStatusCodePages(async context =>
+//{
+//    var response = context.HttpContext.Response;
 
-    if (response.StatusCode == (int)HttpStatusCode.Unauthorized ||
-        response.StatusCode == (int)HttpStatusCode.Forbidden)
-    {
-        response.Redirect("/Home/Login");
-    }
-});
+//    if (response.StatusCode == (int)HttpStatusCode.Unauthorized ||
+//        response.StatusCode == (int)HttpStatusCode.Forbidden)
+//    {
+//        response.Redirect("/Home/Login");
+//    }
+//});
 
 app.UseAuthorization();
 
