@@ -45,7 +45,7 @@ namespace iDent.Web.Services
         public async Task<Result<Account>> LoginAsync(LoginRequest request)
         {
             var response = await _httpClient.PostAsJsonAsync($"api/v1/Account/login", request);
-            if (!response.IsSuccessStatusCode) throw new Exception("Something went wrong when calling API.");
+            if (!response.IsSuccessStatusCode) return new Result<Account>(false, "Username or password is incorrect.");
 
             return await response.ReadContentAsAsync<Result<Account>>();
         }
