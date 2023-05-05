@@ -50,9 +50,9 @@ namespace iDent.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginRequest request)
         {
-            var result = await _accountService.LoginAsync(request);
+            //var result = await _accountService.LoginAsync(request);
 
-            if (result.Data?.Token == null) return View();
+            //if (result.Data?.Token == null) return View();
             
             //var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
             //identity.AddClaim(new Claim(ClaimTypes.Email, result.Data!.Email!));
@@ -60,7 +60,7 @@ namespace iDent.Web.Controllers
             //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
             //HttpContext.Session.SetString("JWToken", result.Data!.Token);
-            TempData["alert"] = $"Welcome, {result.Data!.Email}!";
+            //TempData["alert"] = $"Welcome, {result.Data!.Email}!";
 
             return RedirectToAction("Index");
         }
