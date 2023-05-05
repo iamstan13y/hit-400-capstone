@@ -11,5 +11,6 @@ namespace iDent.API.Models.Data
 
         public DbSet<Account>? Accounts { get; set; }
         public DbSet<Bank>? Banks { get; set; }
+        public DbSet<AuditTrail>? AuditTrails { get; set; }
     }
 }
