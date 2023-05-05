@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iDent.API", "iDent.API\iDen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iDent.ModelLibrary", "iDent.ModelLibrary\iDent.ModelLibrary.csproj", "{5A311750-DCE2-4AB3-A9EB-824D13672DE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iDent.Mobile", "iDent.Mobile\iDent.Mobile.csproj", "{2D7562B4-5BB4-4FF0-9011-D7CD4E526994}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iDent.App", "iDent.App\iDent.App.csproj", "{F35F3BCC-CCB8-4C75-B100-E41E48358E1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,12 +29,12 @@ Global
 		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A311750-DCE2-4AB3-A9EB-824D13672DE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D7562B4-5BB4-4FF0-9011-D7CD4E526994}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D7562B4-5BB4-4FF0-9011-D7CD4E526994}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D7562B4-5BB4-4FF0-9011-D7CD4E526994}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{2D7562B4-5BB4-4FF0-9011-D7CD4E526994}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D7562B4-5BB4-4FF0-9011-D7CD4E526994}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D7562B4-5BB4-4FF0-9011-D7CD4E526994}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F35F3BCC-CCB8-4C75-B100-E41E48358E1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35F3BCC-CCB8-4C75-B100-E41E48358E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35F3BCC-CCB8-4C75-B100-E41E48358E1F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F35F3BCC-CCB8-4C75-B100-E41E48358E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35F3BCC-CCB8-4C75-B100-E41E48358E1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F35F3BCC-CCB8-4C75-B100-E41E48358E1F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
