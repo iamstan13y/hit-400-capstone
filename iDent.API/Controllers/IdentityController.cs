@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using iDent.API.Models.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace iDent.API.Controllers
 {
@@ -6,5 +7,11 @@ namespace iDent.API.Controllers
 	[ApiController]
 	public class IdentityController : ControllerBase
 	{
+		private readonly IUnitOfWork _unitOfWork;
+
+		public IdentityController(IUnitOfWork unitOfWork)
+		{
+			_unitOfWork = unitOfWork;
+		}
 	}
 }
