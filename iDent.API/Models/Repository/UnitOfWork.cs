@@ -7,11 +7,14 @@ namespace iDent.API.Models.Repository
     {
         private readonly AppDbContext _context;
 
-        public UnitOfWork(AppDbContext context)
+		public IIdentityRepository Identity { get; private set; }
+
+		public UnitOfWork(AppDbContext context)
         {
             _context = context;
+            Identity = new IdentityRepository(context);
         }
-
+        
         public void SaveChanges() => _context.SaveChanges();
     }
 }
