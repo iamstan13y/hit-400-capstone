@@ -1,36 +1,74 @@
 ﻿@page "/counter"
 
-<EditForm Model="@exampleModel" OnSubmit="@HandleSubmit">
-    <p>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="name">Email:</label>
-                <InputText id="name" @bind-Value="exampleModel.Name" />
-            </div>
-        </div>
-    </p>
-    <p>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="name">Email:</label>
-                <InputText id="name" @bind-Value="exampleModel.Name" />
-            </div>
-        </div>
-    </p>
+@using iDent.ModelLibrary.Models.Local
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+<EditForm Model="@identity" OnSubmit="@HandleSubmit">
+
+    <h1>My Profile</h1>
+    <p>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label>Identity Number:</label>
+                <InputText id="idNumber" @bind-Value="identity.IdentityNumber" class="form-control" placeholder="12-1234567-A89"/>
+            </div>
+        </div>
+    </p>
+    <p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">First Name(s):</label>
+                <InputText id="firstname" @bind-Value="identity.FirstNames" class="form-control" placeholder="First Names" />
+            </div>
+        </div>
+    </p>
+    <p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Last Name:</label>
+                <InputText id="lastname" @bind-Value="identity.LastName" class="form-control" placeholder="Last Names" />
+            </div>
+        </div>
+    </p>
+    <p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Date of Birth:</label>
+                <InputDate id="dob" @bind-Value="identity.DOB" class="form-control" />
+            </div>
+        </div>
+    </p>
+    <p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Mobile Number:</label>
+                <InputText id="mobilenumber" @bind-Value="identity.MobileNumber" class="form-control" placeholder="07XXXXXXXX" />
+            </div>
+        </div>
+    </p>
+    <p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Email:</label>
+                <InputText id="email" @bind-Value="identity.Email" class="form-control" placeholder="Email" />
+            </div>
+        </div>
+    </p>
+    <p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Address:</label>
+                <InputText id="email" @bind-Value="identity.Address" class="form-control" placeholder="1234 Main St..." />
+            </div>
+        </div>
+    </p>
+    <button type="submit" class="btn btn-primary">Update Details</button>
 </EditForm>
 
 @code {
-    private ExampleModel exampleModel = new();
+    private IdentityRequest identity = new();
 
     private void HandleSubmit()
     {
         
-    }
-
-    public class ExampleModel
-    {
-        public string? Name { get; set; }
     }
 }
