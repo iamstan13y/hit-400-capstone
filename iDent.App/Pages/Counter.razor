@@ -9,7 +9,7 @@
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label>Identity Number:</label>
-                <InputText id="idNumber" @bind-Value="identity.IdentityNumber" class="form-control" placeholder="12-1234567-A89"/>
+                <InputText id="idNumber" @bind-Value="identity.IdentityNumber" class="form-control" placeholder="12-1234567-X89" required="true"/>
             </div>
         </div>
     </p>
@@ -17,7 +17,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="name">First Name(s):</label>
-                <InputText id="firstname" @bind-Value="identity.FirstNames" class="form-control" placeholder="First Names" />
+                <InputText id="firstname" @bind-Value="identity.FirstNames" class="form-control" placeholder="First Names" required="true" />
             </div>
         </div>
     </p>
@@ -25,7 +25,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Last Name:</label>
-                <InputText id="lastname" @bind-Value="identity.LastName" class="form-control" placeholder="Last Names" />
+                <InputText id="lastname" @bind-Value="identity.LastName" class="form-control" placeholder="Last Names" required="true" />
             </div>
         </div>
     </p>
@@ -33,7 +33,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="name">Date of Birth:</label>
-                <InputDate id="dob" @bind-Value="identity.DOB" class="form-control" />
+                <InputDate id="dob" @bind-Value="identity.DOB" class="form-control" required="true" />
             </div>
         </div>
     </p>
@@ -41,7 +41,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Mobile Number:</label>
-                <InputText id="mobilenumber" @bind-Value="identity.MobileNumber" class="form-control" placeholder="07XXXXXXXX" />
+                <InputText id="mobilenumber" @bind-Value="identity.MobileNumber" class="form-control" placeholder="07XXXXXXXX" required="true" />
             </div>
         </div>
     </p>
@@ -49,7 +49,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="name">Email:</label>
-                <InputText id="email" @bind-Value="identity.Email" class="form-control" placeholder="Email" />
+                <InputText id="email" @bind-Value="identity.Email" class="form-control" placeholder="Email" required="true" />
             </div>
         </div>
     </p>
@@ -57,7 +57,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="name">Address:</label>
-                <InputText id="email" @bind-Value="identity.Address" class="form-control" placeholder="1234 Main St..." />
+                <InputText id="email" @bind-Value="identity.Address" class="form-control" placeholder="1234 Main St..." required="true" />
             </div>
         </div>
     </p>
@@ -69,6 +69,6 @@
 
     private void HandleSubmit()
     {
-        
+        ale
     }
 }
