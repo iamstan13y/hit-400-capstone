@@ -14,17 +14,26 @@ namespace iDent.API.Models.Repository
         {
         }
 
-        public async new Task<Result<Invitation>> FindAsync(int identityId)
+        public async Task<Result<IEnumerable<Invitation>>> GetByIdentityIdAsync(int identityId)
         {
-            var invitation = await _dbSet
+            var invitations = await _dbSet
                 .Where(x => x.IdentityId == identityId)
                 .Include(x => x.Bank)
                 .Include(x => x.Identity)
-                .FirstOrDefaultAsync();
+                .ToListAsync();
 
-            if (invitation == null) return new Result<Invitation>(false, "Invitation not found.");
+            return new Result<IEnumerable<Invitation>>(invitations);
+        }
 
-            return new Result<Invitation>(invitation);
+        public async Task<Result<IEnumerable<Invitation>>> GetByBankIdAsync(int bankId)
+        {
+            var invitations = await _dbSet
+                .Where(x => x.BankId == bankId)
+                .Include(x => x.Bank)
+                .Include(x => x.Identity)
+                .ToListAsync();
+
+            return new Result<IEnumerable<Invitation>>(invitations);
         }
     }
 }
