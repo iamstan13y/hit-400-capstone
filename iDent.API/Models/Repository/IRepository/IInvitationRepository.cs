@@ -7,5 +7,7 @@ namespace iDent.API.Models.Repository.IRepository
     {
         Task<Result<IEnumerable<Invitation>>> GetByIdentityIdAsync(int identityId);
         Task<Result<IEnumerable<Invitation>>> GetByBankIdAsync(int bankId);
+        Task<Result<Invitation>> SendRequestAsync(InvitationRequest request);
+        Task<Result<Invitation>> ReviewRequestAsync(ReviewInvitationRequest request);
     }
 }
