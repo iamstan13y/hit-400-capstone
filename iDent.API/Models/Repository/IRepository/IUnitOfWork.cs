@@ -3,6 +3,7 @@
     public interface IUnitOfWork
     {
         IIdentityRepository Identity { get; }
+        IInvitationRepository Invitation { get; }
         void SaveChanges();
     }
 }
