@@ -10,4 +10,9 @@
         public DateTime DOB { get; set; } = DateTime.Now;
         public string? Address { get; set; }
     }
+
+    public class UpdateIdentityRequest : IdentityRequest
+    {
+        public int Id { get; set; }
+    }
 }

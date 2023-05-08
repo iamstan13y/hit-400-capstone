@@ -37,10 +37,35 @@ namespace iDent.API.Controllers
             return Ok(result);
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> Get(int id)
-        //{
-        //	var result = await _unitOfWork.Identity.FindAsync()
-        //}
+        [HttpPut]
+        public async Task<IActionResult> Put(UpdateIdentityRequest request)
+        {
+            var result = await _unitOfWork.Identity.UpdateAsync(new Identity
+            {
+                Id = request.Id,
+                Address = request.Address,
+                DOB = request.DOB,
+                FirstNames = request.FirstNames,
+                Email = request.Email,
+                IdentityNumber = request.IdentityNumber,
+                LastName = request.LastName,
+                MobileNumber = request.MobileNumber
+            });
+
+            _unitOfWork.SaveChanges();
+
+            if (!result.Success) return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var result = await _unitOfWork.Identity.FindAsync(id);
+            if (!result.Success) return NotFound(result);
+
+            return Ok(result);
+        }
     }
 }
