@@ -35,10 +35,10 @@ namespace iDent.API.Controllers
 			return Ok(result);
 		}
 
-		[HttpGet("{id}")]
-		public async Task<IActionResult> Get(int id)
-		{
-			var result = await _unitOfWork.Identity.FindAsync()
-		}
+		//[HttpGet("{id}")]
+		//public async Task<IActionResult> Get(int id)
+		//{
+		//	var result = await _unitOfWork.Identity.FindAsync()
+		//}
 	}
 }
