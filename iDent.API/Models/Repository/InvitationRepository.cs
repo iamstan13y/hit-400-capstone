@@ -35,5 +35,33 @@ namespace iDent.API.Models.Repository
 
             return new Result<IEnumerable<Invitation>>(invitations);
         }
+
+        public async Task<Result<Invitation>> SendRequestAsync(InvitationRequest request)
+        {
+            var invitation = new Invitation
+            {
+                BankId = request.BankId,
+                IdentityId = request.BankId,
+                Reason = request.Reason
+            };
+
+            await _dbSet.AddAsync(invitation);
+
+            return new Result<Invitation>(invitation);
+        }
+
+        public async Task<Result<Invitation>> ReviewRequestAsync(ReviewInvitationRequest request)
+        {
+            var invitation = await _dbSet.FindAsync(request.InvitationId);
+
+            if (invitation == null) return new Result<Invitation>(false, "Invitation not found.");
+
+            invitation.Status = request.Status;
+            invitation.DateUpdated = DateTime.Now;
+
+            _dbSet.Update(invitation);
+            
+            return new Result<Invitation>(invitation);
+        }
     }
 }
