@@ -1,4 +1,5 @@
 ﻿using iDent.API.Models.Repository.IRepository;
+using iDent.ModelLibrary.Models.Local;
 using Microsoft.AspNetCore.Mvc;
 
 namespace iDent.API.Controllers
@@ -20,5 +21,28 @@ namespace iDent.API.Controllers
         [HttpGet("bank/{bankId}")]
         public async Task<IActionResult> GetByBank(int bankId) => Ok(await _unitOfWork.Invitation.GetByBankIdAsync(bankId));
 
+        [HttpPost("request")]
+        public async Task<IActionResult> SendRequest(InvitationRequest request)
+        {
+            var result = await _unitOfWork.Invitation.SendRequestAsync(request);
+
+            _unitOfWork.SaveChanges();
+
+            if (!result.Success) return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [HttpPost("request/review")]
+        public async Task<IActionResult> ReviewRequest(ReviewInvitationRequest request)
+        {
+            var result = await _unitOfWork.Invitation.ReviewRequestAsync(request);
+
+            _unitOfWork.SaveChanges();
+
+            if (!result.Success) return BadRequest(result);
+
+            return Ok(result);
+        }
     }
 }
