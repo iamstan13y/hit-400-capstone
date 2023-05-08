@@ -21,7 +21,8 @@ namespace iDent.ModelLibrary.Extensions
             var content = new StringContent(stringData);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            return httpClient.PostAsync(url, content);
+            var responseMessage = httpClient.PostAsync(url, content);
+            return responseMessage;
         }
 
         public static Task<HttpResponseMessage> PutAsJsonAsync<T>(this HttpClient httpClient, string url, T data)

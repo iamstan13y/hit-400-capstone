@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using iDent.App.Data;
+using iDent.App.Services;
 
 namespace iDent.App
 {
@@ -20,7 +21,10 @@ namespace iDent.App
 			builder.Services.AddSingleton<MainViewModel>();
 			builder.Services.AddSingleton<MainPage>();
 
-			builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddHttpClient<IIDentService, IDentService>(c =>
+                c.BaseAddress = new Uri("https://localhost:7080"));
+
+            builder.Services.AddMauiBlazorWebView();
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
 #endif

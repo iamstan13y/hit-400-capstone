@@ -1,6 +1,9 @@
 ﻿@page "/counter"
 
+@using iDent.App.Services;
 @using iDent.ModelLibrary.Models.Local
+
+@inject IIDentService _identService
 
 <EditForm Model="@identity" OnSubmit="@HandleSubmit">
 
@@ -9,7 +12,7 @@
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label>Identity Number:</label>
-                <InputText id="idNumber" @bind-Value="identity.IdentityNumber" class="form-control" placeholder="12-1234567-X89" required="true"/>
+                <InputText id="idNumber" @bind-Value="identity.IdentityNumber" class="form-control" placeholder="12-1234567-X89" required="true" />
             </div>
         </div>
     </p>
@@ -67,8 +70,15 @@
 @code {
     private IdentityRequest identity = new();
 
-    private void HandleSubmit()
+    private async Task HandleSubmit()
     {
-        ale
+        try
+        {
+            var result = await _identService.AddIdentityAsync(identity);
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 }

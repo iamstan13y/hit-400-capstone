@@ -2,6 +2,7 @@
 {
     public class Identity
     {
+        public int Id { get; set; }
         public string? IdentityNumber { get; set; }
         public string? FirstNames { get; set; }
         public string? LastName { get; set; }
