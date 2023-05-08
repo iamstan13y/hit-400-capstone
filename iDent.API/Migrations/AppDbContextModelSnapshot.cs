@@ -44,6 +44,30 @@ namespace iDent.API.Migrations
                     b.ToTable("Accounts");
                 });
 
+            modelBuilder.Entity("iDent.ModelLibrary.Models.Data.AuditTrail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdentityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Operation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdentityId");
+
+                    b.ToTable("AuditTrails");
+                });
+
             modelBuilder.Entity("iDent.ModelLibrary.Models.Data.Bank", b =>
                 {
                     b.Property<int>("Id")
@@ -72,6 +96,57 @@ namespace iDent.API.Migrations
                     b.HasIndex("AccountId");
 
                     b.ToTable("Banks");
+                });
+
+            modelBuilder.Entity("iDent.ModelLibrary.Models.Data.Identity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstNames")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdentityNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MobileNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Identity");
+                });
+
+            modelBuilder.Entity("iDent.ModelLibrary.Models.Data.AuditTrail", b =>
+                {
+                    b.HasOne("iDent.ModelLibrary.Models.Data.Identity", "Identity")
+                        .WithMany()
+                        .HasForeignKey("IdentityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Identity");
                 });
 
             modelBuilder.Entity("iDent.ModelLibrary.Models.Data.Bank", b =>
