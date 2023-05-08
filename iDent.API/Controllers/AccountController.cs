@@ -9,6 +9,7 @@ namespace iDent.API.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAccountRepository _accountRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
         public AccountController(IAccountRepository accountRepository) => _accountRepository = accountRepository;
 
@@ -25,6 +26,15 @@ namespace iDent.API.Controllers
         public async Task<IActionResult> Post(LoginRequest request)
         {
             var result = await _accountRepository.LoginAsync(request);
+            if (!result.Success) return Unauthorized(result);
+
+            return Ok(result);
+        }
+
+        [HttpPost("mobile/login")]
+        public async Task<IActionResult> MobileLogin(LoginRequest request)
+        {
+            var result = await _unitOfWork.Identity.AuthenticateAsync(request);
             if (!result.Success) return Unauthorized(result);
 
             return Ok(result);
