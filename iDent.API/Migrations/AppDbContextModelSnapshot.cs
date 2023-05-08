@@ -138,6 +138,38 @@ namespace iDent.API.Migrations
                     b.ToTable("Identity");
                 });
 
+            modelBuilder.Entity("iDent.ModelLibrary.Models.Data.Invitation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BankId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdentityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BankId");
+
+                    b.HasIndex("IdentityId");
+
+                    b.ToTable("Invitations");
+                });
+
             modelBuilder.Entity("iDent.ModelLibrary.Models.Data.AuditTrail", b =>
                 {
                     b.HasOne("iDent.ModelLibrary.Models.Data.Identity", "Identity")
@@ -158,6 +190,25 @@ namespace iDent.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("iDent.ModelLibrary.Models.Data.Invitation", b =>
+                {
+                    b.HasOne("iDent.ModelLibrary.Models.Data.Bank", "Bank")
+                        .WithMany()
+                        .HasForeignKey("BankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("iDent.ModelLibrary.Models.Data.Identity", "Identity")
+                        .WithMany()
+                        .HasForeignKey("IdentityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Bank");
+
+                    b.Navigation("Identity");
                 });
 #pragma warning restore 612, 618
         }
