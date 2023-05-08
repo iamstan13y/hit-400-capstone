@@ -14,10 +14,10 @@ namespace iDent.API.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet("{identityId}")]
+        [HttpGet("identity/{identityId}")]
         public async Task<IActionResult> GetByIdentity(int identityId) => Ok(await _unitOfWork.Invitation.GetByIdentityIdAsync(identityId));
 
-        [HttpGet("{bankId}")]
+        [HttpGet("bank/{bankId}")]
         public async Task<IActionResult> GetByBank(int bankId) => Ok(await _unitOfWork.Invitation.GetByBankIdAsync(bankId));
 
     }
