@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using iDent.API.Models.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace iDent.API.Controllers
 {
@@ -6,5 +7,18 @@ namespace iDent.API.Controllers
     [ApiController]
     public class InvitationsController : ControllerBase
     {
+        public readonly IUnitOfWork _unitOfWork;
+
+        public InvitationsController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        [HttpGet("{identityId}")]
+        public async Task<IActionResult> GetByIdentity(int identityId) => Ok(await _unitOfWork.Invitation.GetByIdentityIdAsync(identityId));
+
+        [HttpGet("{bankId}")]
+        public async Task<IActionResult> GetByBank(int bankId) => Ok(await _unitOfWork.Invitation.GetByBankIdAsync(bankId));
+
     }
 }
