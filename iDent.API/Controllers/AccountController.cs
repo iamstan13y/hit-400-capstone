@@ -11,7 +11,11 @@ namespace iDent.API.Controllers
         private readonly IAccountRepository _accountRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public AccountController(IAccountRepository accountRepository) => _accountRepository = accountRepository;
+        public AccountController(IAccountRepository accountRepository, IUnitOfWork unitOfWork)
+        {
+            _accountRepository = accountRepository;
+            _unitOfWork = unitOfWork;
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post(AccountRequest request)
