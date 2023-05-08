@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using iDent.Web.Services.IServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace iDent.Web.Controllers
 {
@@ -13,8 +14,8 @@ namespace iDent.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var invitations = await _invitationService.GetAllAsync();
-            return View();
+            var invitations = await _invitationService.GetByBankIdAsync(1);
+            return View(invitations);
         }
     }
 }
