@@ -41,7 +41,7 @@ namespace iDent.API.Models.Repository
             var invitation = new Invitation
             {
                 BankId = request.BankId,
-                IdentityId = request.BankId,
+                IdentityId = request.IdentityId,
                 Reason = request.Reason
             };
 
